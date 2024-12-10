@@ -120,4 +120,8 @@
     {{ partial "umami_analytics.html" . }}
 {{ end }}
 
+{{ if (.Site.Params.SplitbeeAnalytics.enabled ) }}
+    {{ partial "splitbee_analytics.html" . }}
+{{ end }}
+
 {{ partial "head-extra.html" . }}

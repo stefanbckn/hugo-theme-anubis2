@@ -124,4 +124,8 @@
     {{ partial "splitbee_analytics.html" . }}
 {{ end }}
 
+{{ if (.Site.Params.SimpleAnalytics.enabled ) }}
+    {{ partial "simple_analytics.html" . }}
+{{ end }}
+
 {{ partial "head-extra.html" . }}

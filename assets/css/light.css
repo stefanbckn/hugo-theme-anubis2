@@ -39,6 +39,7 @@
   }
 }
 html[data-theme="light"] {
+  --title-color: hsl(0, 0%, 10%);
   --font-color: hsl(0, 0%, 15%);
   --bg-color: #ffffff;
 

@@ -20,7 +20,7 @@ html {
 body {
     margin: 0;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     color: var(--font-color);
     background: var(--bg-color);
@@ -78,15 +78,24 @@ main {
     padding: 0px;
 }
 
+.toc ul {
+    padding-left: 1em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
 /* Headers */
 h1 {
-    font-size: 1.35em;
+    font-size: 1.4em;
+    letter-spacing: -0.01em;
 }
 
 h2 {
     color: var(--title-color);
-    font-size: 1.2em;
-    margin-top: 2em;
+    font-size: 1.25em;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+    letter-spacing: -0.01em;
 }
 
 h2:first-of-type {
@@ -96,6 +105,8 @@ h2:first-of-type {
 h3 {
     color: var(--title-color);
     font-size: 1.1em;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
 }
 
 /* Links */
@@ -204,7 +215,7 @@ code {
 }
 
 pre {
-    padding: 0.6em;
+    padding: 0.75em;
     margin-bottom: 1em;
 }
 
@@ -268,7 +279,8 @@ td pre code {
 div.highlight {
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    margin-bottom: 14px;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
     overflow: hidden;
 }
 
@@ -314,14 +326,16 @@ pre kbd {
 /* Styles */
 
 blockquote {
-    border-left: 2px solid var(--bq-color);
-    padding: 0.1em 1em;
-    margin-left: 0.75em;
+    border-left: 3px solid var(--bq-color);
+    padding: 0.25em 1.25em;
+    margin-left: 0.5em;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
 }
 
 p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 hr {
@@ -469,8 +483,8 @@ article:not(:last-of-type) {
 .post-header {
     font-size: 14px;
     margin-top: 1em;
-    line-height: 1.1em;
-    margin-bottom: 1em;
+    line-height: 1.4em;
+    margin-bottom: 1.5em;
 }
 
 .post-header header {
@@ -709,21 +723,22 @@ article img {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 1.5em auto;
 }
 
 article figcaption {
     color: grey;
     text-align: center;
     font-size: 0.85em;
-    margin-bottom: 2em;
+    margin-top: -1em;
+    margin-bottom: 1.5em;
 }
 
 article video {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 1.5em auto;
 }
 
 code.has-jax {
@@ -1036,4 +1051,23 @@ ul.footer-menu>li {
 
 .e-content {
     font-size: 16px;
+    line-height: 1.75;
+}
+
+.e-content ul,
+.e-content ol {
+    padding-left: 1.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+.e-content li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.e-content li > ul,
+.e-content li > ol {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }

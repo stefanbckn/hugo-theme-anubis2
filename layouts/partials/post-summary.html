@@ -13,6 +13,7 @@
                         height: 1.2em;
                         background-size: auto 100%;
                         vertical-align: text-bottom;
+                        margin-right: 2px;
                     }
                 </style>
             {{ end }}
@@ -23,24 +24,25 @@
         {{ partial "post-language-switcher.html" . }}
     </div>
 
-    {{ if not .Site.Params.disableSummary }}
+    {{ $params := partial "params-helper.html" . }}
+    {{ if $params.enableSummary }}
         <div class="content post-summary p-summary">
             {{ .Summary | safeHTML }}
         </div>
     {{ end }}
-
-    {{ if and (.Truncated) (.Site.Params.readMore) }}
+    
+    {{ if and (.Truncated) ($params.enableReadMoreButton) }}
         <div class="read-more">
             <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
         </div>
     {{ end }}
     
     {{ if .Store.Get "hasMermaid" }}
-        {{ partial "mermaid_support.html" . }}
+        {{ partial "features/mermaid.html" . }}
     {{ end }}
     
     {{ if .Params.math }}
-        {{ partial "mathjax_support.html" . }}
+        {{ partial "features/mathjax.html" . }}
     {{ end }}
 
     {{ partial "post-info.html" . }}

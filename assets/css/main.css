@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     /* 1 */
     -ms-text-size-adjust: 100%;
     /* 2 */
@@ -20,7 +20,7 @@ html {
 body {
     margin: 0;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     color: var(--font-color);
     background: var(--bg-color);
@@ -78,14 +78,24 @@ main {
     padding: 0px;
 }
 
+.toc ul {
+    padding-left: 1em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
 /* Headers */
 h1 {
-    font-size: 1.35em;
+    font-size: 1.4em;
+    letter-spacing: -0.01em;
 }
 
 h2 {
-    font-size: 1.2em;
-    margin-top: 3em;
+    color: var(--title-color);
+    font-size: 1.25em;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+    letter-spacing: -0.01em;
 }
 
 h2:first-of-type {
@@ -93,7 +103,10 @@ h2:first-of-type {
 }
 
 h3 {
+    color: var(--title-color);
     font-size: 1.1em;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
 }
 
 /* Links */
@@ -154,8 +167,8 @@ thead {
 
 table {
     max-width: 100%;
-    display: block;
-    overflow: scroll;
+    display: table;
+    overflow: hidden;
     border-spacing: 0;
     border-collapse: collapse;
     border-top-left-radius: 6px;
@@ -163,12 +176,17 @@ table {
     font-size: 14px;
 }
 
+.highlight table {
+    border-radius: 0px;
+}
+
 th,
 td {
     padding: 0.25em 0.5em;
-    border: 1px double var(--table-border-color);
-
+    border: 1px solid var(--table-border-color);
 }
+
+
 
 /* Code */
 mark {
@@ -186,7 +204,7 @@ kbd {
     line-height: 154%;
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    overflow: scroll;
+    overflow: visible;
 }
 
 /* <code> tag */
@@ -197,7 +215,13 @@ code {
 }
 
 pre {
-    padding: 0.3em;
+    padding: 0.75em;
+    margin-bottom: 1em;
+}
+
+pre:has(code.language-txt) {
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    /* top, right, bottom, left */
 }
 
 /* <kbd> inside <p> */
@@ -230,7 +254,7 @@ p kbd {
 
 td pre {
     border: none;
-    /* padding: 0px; */
+    padding: 0px;
     border-radius: 0px;
 }
 
@@ -255,16 +279,20 @@ td pre code {
 div.highlight {
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    margin-bottom: 14px;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    overflow: hidden;
 }
 
 div.highlight div {
-    overflow: scroll;
+    overflow: auto;
+    padding: 0.3em 0em 0.3em 0em;
+    /* top, right, bottom, left */
 }
 
 div.highlight pre {
     border: none;
-    display: grid;
+    display: block;
     margin: 0px;
     overflow: auto;
     /* Have to add this line, otherwise the "pre" and "code" will have different width */
@@ -298,14 +326,16 @@ pre kbd {
 /* Styles */
 
 blockquote {
-    border-left: 2px solid var(--bq-color);
-    padding: 0.1em 1em;
-    margin-left: 0.75em;
+    border-left: 3px solid var(--bq-color);
+    padding: 0.25em 1.25em;
+    margin-left: 0.5em;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
 }
 
 p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 hr {
@@ -323,11 +353,12 @@ hr {
 }
 
 header a {
-    color: var(--font-color);
+    color: var(--title-color);
 }
 
 header h1 {
-    font-size: 1em;
+    color: var(--title-color);
+    font-size: 18px;
     margin-top: 1em;
     margin-bottom: 0;
     font-weight: normal;
@@ -450,9 +481,10 @@ article:not(:last-of-type) {
 /* Articles */
 
 .post-header {
+    font-size: 14px;
     margin-top: 1em;
-    line-height: 1.1em;
-    margin-bottom: 1em;
+    line-height: 1.4em;
+    margin-bottom: 1.5em;
 }
 
 .post-header header {
@@ -515,14 +547,14 @@ article:not(:last-of-type) {
 
 article header h1 {
     font-size: 1.35em;
-    line-height: 1.1em;
+    line-height: 1.5em;
     margin-bottom: 0.5em;
     font-weight: 600;
     display: inline;
 }
 
 article header h1 a {
-    color: var(--font-color);
+    color: var(--title-color);
     border: none;
     text-decoration: none;
 }
@@ -609,18 +641,16 @@ article header h1 a {
 
 .post-list .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
+    font-size: 12px;
     margin-top: 1em;
-    margin-bottom: 1em;
     display: block;
     gap: 1em;
 }
 
 .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
+    font-size: 12px;
     margin-top: 1em;
-    margin-bottom: 1em;
     display: flex;
     gap: 1em;
 }
@@ -693,21 +723,22 @@ article img {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 1.5em auto;
 }
 
 article figcaption {
     color: grey;
     text-align: center;
     font-size: 0.85em;
-    margin-bottom: 2em;
+    margin-top: -1em;
+    margin-bottom: 1.5em;
 }
 
 article video {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 1.5em auto;
 }
 
 code.has-jax {
@@ -719,6 +750,7 @@ code.has-jax {
 
 .read-more {
     margin: 1em 0;
+    font-size: 14px;
 }
 
 .divider {
@@ -733,6 +765,7 @@ code.has-jax {
 .post-summary {
     margin-top: 0.5em;
     display: block;
+    font-size: 14px;
 }
 
 .post-summary>p {
@@ -744,7 +777,8 @@ code.has-jax {
     list-style: none;
     padding: 0;
     display: inline;
-    font-size: 14px;
+    font-size: 12px;
+    color: var(--font-color);
 }
 
 .post-translations>li {
@@ -794,6 +828,7 @@ code.has-jax {
     justify-content: space-between;
     margin-top: 3em;
     text-align: center;
+    font-size: 14px;
 }
 
 .pagination-item {
@@ -843,6 +878,34 @@ code.has-jax {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+/* Footer utilities */
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-licenses {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-stat-link {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: none;
+    cursor: pointer;
+    color: var(--pagination-link-color);
+}
+
+.footer-beian-icon {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
 }
 
 ul.language-select,
@@ -864,19 +927,19 @@ ul.footer-menu>li {
     cursor: pointer;
 }
 
-.h-card {
+/* .h-card {
     display: none;
-}
+} */
 
 /* Copy code  */
 .highlight {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .highlight:hover .highlight-copy-btn {
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
 }
 
 .highlight-copy-btn {
@@ -884,7 +947,7 @@ ul.footer-menu>li {
     position: absolute;
     top: 0px;
     right: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
     border-radius: 6px;
     padding: 1px;
     font-size: 0.7em;
@@ -903,10 +966,32 @@ ul.footer-menu>li {
     cursor: pointer;
 }
 
+/* Make copy button visible when focused via keyboard */
+.highlight:focus-within .highlight-copy-btn,
+.highlight .highlight-copy-btn:focus,
+.highlight .highlight-copy-btn:focus-visible {
+    display: inline-block;
+    outline: none;
+}
+
 .highlight-copy-btn,
 .highlight-copy-btn svg {
     vertical-align: middle;
     margin: 8px;
+}
+
+/* Touch devices: show button without hover */
+@media (hover: none) and (pointer: coarse) {
+    .highlight .highlight-copy-btn {
+        display: inline-block;
+    }
+}
+
+/* Reduced motion: remove transitions */
+@media (prefers-reduced-motion: reduce) {
+    .highlight-copy-btn {
+        transition: none;
+    }
 }
 
 /* Others */
@@ -962,4 +1047,27 @@ ul.footer-menu>li {
     .post-pagination .pagination-item {
         max-width: 10em;
     }
+}
+
+.e-content {
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.e-content ul,
+.e-content ol {
+    padding-left: 1.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+.e-content li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.e-content li > ul,
+.e-content li > ol {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
